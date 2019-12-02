@@ -184,7 +184,7 @@ export default class ControlPanel extends Component {
                                 }}
                             />
                         </View>
-                        <View style={{ flex: 0.3, flexDirection: 'row', alignItems: 'flex-end', alignContent: 'flex-end' }}>
+                        <View style={{ flex: 0.3, flexDirection: 'row', alignItems: 'flex-end', alignContent: 'flex-end', zIndex:-1 }}>
                             <Text style={{
                                 padding: 3,
                                 height: 20,

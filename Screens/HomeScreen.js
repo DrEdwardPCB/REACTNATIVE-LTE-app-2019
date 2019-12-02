@@ -38,7 +38,7 @@ class HomeScreenContent extends Component {
     }
     dataArray = [
         { title: "Booth Info", content: 'Exhibitor Name: Binary Creation Limited\nBooth Number: F34' },
-        { title: "Company Info", content: 'Binary Creation Limited (Coding101) is established by a group of IT and education professionals who aim at providing the best quality STEM education to school children and being a trusted and reliable STEM and Coding Education Partner. We provide one-stop STEM solution for schools including courses, teaching materials and training, STEM Lab ideas, other activities and workshops support and also different competitions. \n\nWe have instructed over 50000 student hours in STEM and coding education and serviced over 250 Schools in Hong Kong and Macau. Moreover, being one of the start up company in Hong Kong Science Park, we own our own development -- ObjectBlocks programming platform and advocating universal maker education.\n\nCoding101 由一群從事科技及教育事業的專才所創立，一直致力成為值得信賴的STEM和編程教育合作夥伴，為學校提供一站式方案，可配合要求訂製所需課程、教學配套、設計Lab、課程及其他活動支援，亦不時舉辨教師工作坊及比賽。為本港學生提供優質的教育課程及配套資源。現已服務了超過250間中小學，50000個教學小時。作為本地初創公司之一，我們亦有自家產品研發（Objectblocks編程平台）及推崇普及創客教育。' }
+        { title: "Company Info", content: 'Binary Creation Limited (Coding101) is established by a group of IT and education professionals who aim at providing the best quality STEM education to school children and being a trusted and reliable STEM and Coding Education Partner. We provide one-stop STEM solution for schools including courses, teaching materials and training, STEM Lab ideas, other activities and workshops support and also different competitions. \n\nWe have instructed over 50000 student hours in STEM and coding education and serviced over 250 Schools in Hong Kong and Macau. Moreover, being one of the start up company in Hong Kong Science Park, we own our own development -- ObjectBlocks programming platform and advocating universal maker education.\n\nCoding101 由一群從事科技及教育事業的專才所創立，一直致力成為值得信賴的STEM和編程教育合作夥伴，為學校提供一站式方案，可配合要求訂製所需課程、教學配套、設計Lab、課程及其他活動支援，亦不時舉辨教師工作坊及比賽。為本港學生提供優質的教育課程及配套資源。現已服務了超過250間中小學，50000個教學小時。作為本地初創公司之一，我們亦有自家產品研發（Objectblocks編程平台）及推崇普及創客教育。\n\n\n' }
     ]
     componentDidMount() {
         this.executeNotification()
@@ -158,9 +158,10 @@ class HomeScreenContent extends Component {
                             </View>
                             <View style={{ flex: 2, padding: 10 }}>{/**floorplan button */}
                                 <Button
+                                    
                                     onPress={() => { this.setState({ showMap: true }) }}
                                 >
-                                    <Text>Floor Plan</Text>
+                                    <Text style={{ fontSize: Platform.OS == 'ios' ? undefined : 11 }}>Floor Plan</Text>
                                     <Modal
                                         width={0.9}
                                         visible={this.state.showMap}
@@ -210,7 +211,7 @@ class HomeScreenContent extends Component {
                                 <Button
                                     onPress={() => { this.state.navigation.navigate('WorkShopScreen') }}
                                 >
-                                    <Text style={{ fontSize: 13, textAlign: 'center' }}>Hands-on session</Text>
+                                    <Text style={{fontSize: Platform.OS == 'ios' ? 13 : 11 , textAlign: 'center' }}>Hands-on session</Text>
                                 </Button>
                             </View>
                         </View>
@@ -323,61 +324,28 @@ class HomeScreenContent extends Component {
                     <View style={{ padding: 15 }}>
                         <Text style={{ fontSize: 18, marginBottom: 10, fontWeight: 'bold' }}>More on our company</Text>
 
-                        <Accordion dataArray={this.dataArray} />
+                        <Accordion dataArray={this.dataArray} renderContent={(item) => {
+                            return (<Text
+                                style={{
+                                    
+                                    padding: 10,
+                                }}
+                            >
+                                {item.content}
+                            </Text>)
+                        }} />
                     </View>
 
-                    <View style={{ height: Dimensions.get('window').height * 0.4 }}>{/** this is the Education partner */}
+                    <View style={{ height: Dimensions.get('window').height * 0.6 }}>{/** this is the Education partner */}
                         <View style={{ flex: 1, paddingLeft: 20, paddingBottom: 10, justifyContent: 'flex-end' }}>
                             <Text style={{ fontSize: 18, fontWeight: 'bold' }}>Our Education Partner</Text>
                         </View>
-                        <View style={{ flex: 3, flexWrap: 'wrap', flexDirection: 'row' }}>{/**education partner */}
-                            <View style={{ width: Dimensions.get('window').width / 4, height: Dimensions.get('window').width / 4 / 3447 * 737, padding: 2 }}>
+                        <View style={{ flex: 4, flexWrap: 'wrap', flexDirection: 'row' }}>{/**education partner */}
+                            <View style={{ width: Dimensions.get('window').width, height: Dimensions.get('window').width / 940 * 573, padding: 2 }}>
                                 <Image
                                     resizeMode='contain'
                                     style={{ width: '100%', height: '100%' }}
-                                    source={require('../assets/homepage/Partnericon/microsoft_PNG16.png')}
-                                />
-                            </View>
-                            <View style={{ width: Dimensions.get('window').width / 4, height: Dimensions.get('window').width / 4 / 4421 * 1135, padding: 2 }}>
-                                <Image
-                                    resizeMode='contain'
-                                    style={{ width: '100%', height: '100%' }}
-                                    source={require('../assets/homepage/Partnericon/makeblock.png')}
-                                />
-                            </View>
-                            <View style={{ width: Dimensions.get('window').width / 4, height: Dimensions.get('window').width / 4 / 1714 * 983, padding: 2 }}>
-                                <Image
-                                    resizeMode='contain'
-                                    style={{ width: '100%', height: '100%' }}
-                                    source={require('../assets/homepage/Partnericon/Metas-邁特思-Logo-2.png')}
-                                />
-                            </View>
-                            <View style={{ width: Dimensions.get('window').width / 4, height: Dimensions.get('window').width / 4 / 829 * 309, padding: 2 }}>
-                                <Image
-                                    resizeMode='contain'
-                                    style={{ width: '100%', height: '100%' }}
-                                    source={require('../assets/homepage/Partnericon/Untitled-1.png')}
-                                />
-                            </View>
-                            <View style={{ width: Dimensions.get('window').width / 4, height: Dimensions.get('window').width / 4 / 400 * 175, padding: 2 }}>
-                                <Image
-                                    resizeMode='contain'
-                                    style={{ width: '100%', height: '100%' }}
-                                    source={require('../assets/homepage/Partnericon/codingGalaxy_logotype.png')}
-                                />
-                            </View>
-                            <View style={{ width: Dimensions.get('window').width / 4, height: Dimensions.get('window').width / 4, padding: 2 }}>
-                                <Image
-                                    resizeMode='contain'
-                                    style={{ width: '100%', height: '100%' }}
-                                    source={require('../assets/homepage/Partnericon/codekingdoms.png')}
-                                />
-                            </View>
-                            <View style={{ width: Dimensions.get('window').width / 4, height: Dimensions.get('window').width / 4 / 1200 * 538, padding: 2 }}>
-                                <Image
-                                    resizeMode='contain'
-                                    style={{ width: '100%', height: '100%' }}
-                                    source={require('../assets/homepage/Partnericon/logo.png')}
+                                    source={require('../assets/homepage/Partnericon.png')}
                                 />
                             </View>
                         </View>

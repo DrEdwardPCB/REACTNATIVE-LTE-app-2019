@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import { Container, Header, Footer, Content, Icon, Title, Left, Right, Body, Text, Button, Form, Cards, Item, CardItem } from 'native-base'
-import { View, StyleSheets, AsyncStorage ,Platform,Dimensions, Image } from 'react-native'
+import { View, StyleSheets, AsyncStorage, Platform, Dimensions, Image } from 'react-native'
 import ScreenWrapper from '../Tools/ScreenWrapper'
 import { Agenda } from 'react-native-calendars'
 import moment from 'moment'
 import firebaseSvc from '../firebaseSvc'
+import { ScrollView } from 'react-native-gesture-handler'
 export default class WorkShopScreen extends Component {
     render() {
         return (
@@ -70,14 +71,14 @@ class WorkShopScreenContent extends Component {
                     var daylist = JSON.parse(JSON.stringify(this.state.presetItems))
                     this.state.processedAgendaItems.forEach((item) => {
                         daylist[item.date].push(item)
-                        daylist[item.date].sort(function(a,b){return a.id-b.id})
+                        daylist[item.date].sort(function (a, b) { return a.id - b.id })
                     })
 
                     //console.log("daylist")
                     //console.log(daylist)
                     this.setState({ readyItem: daylist, refreshing: false }, () => {
                         //add listener to keep update items
-                        firebaseSvc.refOnEvents((snapshot)=>this.handleRefOn(snapshot))
+                        firebaseSvc.refOnEvents((snapshot) => this.handleRefOn(snapshot))
 
                         ////////////////////////////////////
                     })
@@ -86,7 +87,7 @@ class WorkShopScreenContent extends Component {
         })
     }
 
-    handleRefOn=(snapshot) => {
+    handleRefOn = (snapshot) => {
         //this snapshot returns single item
         //setstate for refreshing + check again async storage and update a single item
         this.setState({ refreshing: true }, async () => {
@@ -125,7 +126,7 @@ class WorkShopScreenContent extends Component {
         })
     }
 
-    
+
     componentWillUnmount() {
         firebaseSvc.refOffEvents()
     }
@@ -142,26 +143,30 @@ class WorkShopScreenContent extends Component {
                     <Body>
                         <Title>Schedule</Title>
                     </Body>
-                    <Right/>
+                    <Right />
                 </Header>
                 <Content Bounces={false} scrollEnabled={false}>
-                    <View style={{ height: Platform.OS==="ios"?(Dimensions.get('window').height-64)*0.3:(Dimensions.get('window').height-56)*0.3, flexDirection:'row' }}>
-                        <View style={{flex:1, justifyContent:'center', alignContent:'center', alignItems:'center'}}>
+                    <View style={{ height: Platform.OS === "ios" ? (Dimensions.get('window').height - 64) * 0.3 : (Dimensions.get('window').height - 56) * 0.3, flexDirection: 'row' }}>
+                        <View style={{ flex: 1, justifyContent: 'center', alignContent: 'center', alignItems: 'center' }}>
                             <Image
-                            style={{height: Platform.OS==="ios"?(Dimensions.get('window').height-64)*0.1:(Dimensions.get('window').height-56)*0.1, flexDirection:'row', width: Platform.OS==="ios"?(Dimensions.get('window').height-64)*0.1:(Dimensions.get('window').height-56)*0.1, flexDirection:'row'}}
-                            resizeMode='cover'
-                            source={require('../assets/biotechnology.jpg')}
+                                style={{ height: Platform.OS === "ios" ? (Dimensions.get('window').height - 64) * 0.1 : (Dimensions.get('window').height - 56) * 0.1, flexDirection: 'row', width: Platform.OS === "ios" ? (Dimensions.get('window').height - 64) * 0.1 : (Dimensions.get('window').height - 56) * 0.1, flexDirection: 'row' }}
+                                resizeMode='cover'
+                                source={require('../assets/biotechnology.jpg')}
                             />
                         </View>
-                        <View style={{flex:2, padding:10}}>
-                            <Title style={{color:'black'}}>Registration Process</Title>
-                            <View style={{margin:15, borderBottomWidth:1,borderColor:'rgba(0,0,0,.1)'}}></View>
-                            <Text>1. choose a session from the below calendar</Text>
-                            <Text style={{paddingVertical:10}}>2. click the arrow on the right to reservation page</Text>
-                            <Text>3. click the register button to register</Text>
+
+                        <View style={{ flex: 2, padding: 10 }}>
+                            <Title style={{ color: 'black' }}>Registration Process</Title>
+                            <ScrollView>
+                                <View style={{ margin: 15, borderBottomWidth: 1, borderColor: 'rgba(0,0,0,.1)' }}></View>
+                                <Text>1. choose a session from the below calendar</Text>
+                                <Text style={{ paddingVertical: 10 }}>2. click the arrow on the right to reservation page</Text>
+                                <Text>3. click the register button to register</Text>
+                            </ScrollView>
                         </View>
+
                     </View>
-                    <View style={{ height: Platform.OS==="ios"?(Dimensions.get('window').height-64)*0.7:(Dimensions.get('window').height-56)*0.7 }}>
+                    <View style={{ height: Platform.OS === "ios" ? (Dimensions.get('window').height - 64) * 0.7 : (Dimensions.get('window').height - 56) * 0.7 }}>
                         <Agenda
                             // the list of items that have to be displayed in agenda. If you want to render item as empty date
                             // the value of date key kas to be an empty array []. If there exists no value for date key it is
@@ -201,25 +206,26 @@ class WorkShopScreenContent extends Component {
                                         padding: 10,
                                         flexDirection: 'row'
                                     }}>
-                                        <View style={{flex:3,justifyContent:'center', alignContent:'center',alignItems:'center',borderRightWidth:1, borderRightColor:'rgba(0,0,0,.1)'}}>
-                                            <Text style={{fontSize:12, color:'rgba(0,0,0,.4)'}}>Quota Left</Text>
-                                            <Text style={{fontSize:32, fontWeight:'bold',color:'rgba(0,0,0,.5)'}}>
-                                                {item.quota-item.joint}
+                                        <View style={{ flex: 3, justifyContent: 'center', alignContent: 'center', alignItems: 'center', borderRightWidth: 1, borderRightColor: 'rgba(0,0,0,.1)' }}>
+                                            <Text style={{ fontSize: 12, color: 'rgba(0,0,0,.4)' }}>Quota Left</Text>
+                                            <Text style={{ fontSize: 32, fontWeight: 'bold', color: 'rgba(0,0,0,.5)' }}>
+                                                {item.quota - item.joint}
                                             </Text>
                                         </View>
-                                        <View style={{flex:5, paddingLeft:15}}>
-                                            <Title style={{color:'black'}}>{item.topic}</Title>
-                                            <Text style={{fontStyle:'italic', marginTop:5}}>{item.startTime}-{item.endTime}</Text>
+                                        <View style={{ flex: 5, paddingLeft: 15 }}>
+                                            <Title style={{ color: 'black' }}>{item.topic}</Title>
+                                            <Text style={{ fontStyle: 'italic', marginTop: 5 }}>{item.startTime}-{item.endTime}</Text>
                                             <Text>Venue:{item.venue}</Text>
                                         </View>
-                                        <View style={{flex:2, justifyContent:'center', alignContent:'center',alignItems:'center'}}>
+                                        <View style={{ flex: 2, justifyContent: 'center', alignContent: 'center', alignItems: 'center' }}>
                                             <Button transparent
-                                                onPress={()=>{
+                                                onPress={() => {
                                                     //firebaseSvc.refOffEvents()
-                                                    this.props.navigation.navigate('RegistrationScreen',{
-                                                    event:item,
-                                                    onGoBack:firebaseSvc.refOnEvents((snapshot)=>this.handleRefOn(snapshot))
-                                                })}}
+                                                    this.props.navigation.navigate('RegistrationScreen', {
+                                                        event: item,
+                                                        onGoBack: firebaseSvc.refOnEvents((snapshot) => this.handleRefOn(snapshot))
+                                                    })
+                                                }}
                                             >
                                                 <Icon name='ios-arrow-forward'></Icon>
                                             </Button>
@@ -237,7 +243,7 @@ class WorkShopScreenContent extends Component {
                             // specify what should be rendered instead of ActivityIndicator
                             //renderEmptyData={() => { return (<View />); }}
                             // specify your item comparison function for increased performance
-                            rowHasChanged={(r1, r2) => { return (r1.joint !== r2.joint) || (r1.date !== r2.date) || (r1.quota !== r2.quota) || (r1.startTime !== r2.startTime) || (r1.topic !== r2.topic) || (r1.registered!==r2.registered) }}
+                            rowHasChanged={(r1, r2) => { return (r1.joint !== r2.joint) || (r1.date !== r2.date) || (r1.quota !== r2.quota) || (r1.startTime !== r2.startTime) || (r1.topic !== r2.topic) || (r1.registered !== r2.registered) }}
                             // Hide knob button. Default = false
                             //hideKnob={true}
                             // By default, agenda dates are marked if they have at least one item, but you can override this if needed
