@@ -120,8 +120,9 @@ export default class ControlPanel extends Component {
                                 backgroundColor: 'rgba(244,244,244,1)',
 
                             }}>
-                                <View style={{ flex: 1, padding: 10, backgroundColor: 'white' }}>
+                                <View style={{ flex: 1, padding: 10, backgroundColor: 'white', flexDirection:'row', justifyContent:'space-between' }}>
                                     <Text style={{ fontSize: 20, fontWeight: 'bold' }}>News</Text>
+                                    <Text>LTE Booth: F34</Text>
                                 </View>
                                 <View style={{ flex: 4, padding: 10 }}>
                                     <FlatList

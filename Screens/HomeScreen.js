@@ -4,11 +4,11 @@ import { View, StyleSheets, AsyncStorage, Platform, Image, ImageBackground, Dime
 import registerForPushNotificationsAsync from '../Tools/expoNotification'
 import { Notifications } from 'expo'
 import ScreenWrapper from '../Tools/ScreenWrapper'
-import uuid from 'uuid'
+import { Video } from 'expo-av'
 import QuickStorageSvc from '../Tools/QuickStorage'
 import Modal, { ModalContent, ModalTitle, ModalFooter, ModalButton } from 'react-native-modals'
 import Lightbox from 'react-native-lightbox';
-import PhotoView from 'react-native-photo-view';
+
 export default class HomeScreen extends Component {
     state = {
         userid: 1,
@@ -130,12 +130,26 @@ class HomeScreenContent extends Component {
                 </Header>
                 <Content>
                     <View style={{ height: Dimensions.get('window').height * 0.3 }}>{/** this is the picture */}
+
+                        <Video
+                            source={require('../assets/homepage/coding101_app.mp4')}
+                            rate={1.0}
+                            volume={1.0}
+                            isMuted={false}
+                            resizeMode="contain"
+                            shouldPlay
+                            isLooping
+                            style={{ width: '100%', height: '100%' }}
+                        />
+
+                        {/*}
                         <ImageBackground
                             style={{ width: '100%', height: '100%' }}
                             source={require('../assets/homepage/Photo.png')}
                             resizeMode='cover'
                         >
                         </ImageBackground>
+                        {*/}
                     </View>
                     <View style={{ height: Dimensions.get('window').height }}>{/** this is the info */}
                         <View style={{ flex: 2, flexDirection: 'row' }}>
@@ -196,14 +210,14 @@ class HomeScreenContent extends Component {
                                 <Button
                                     onPress={() => { this.state.navigation.navigate('WorkShopScreen') }}
                                 >
-                                    <Text style={{fontSize:13, textAlign:'center'}}>Hands-on session</Text>
+                                    <Text style={{ fontSize: 13, textAlign: 'center' }}>Hands-on session</Text>
                                 </Button>
                             </View>
                         </View>
 
 
                         <View style={{
-                            flex: 3, margin: 10, 
+                            flex: 3, margin: 10,
                             padding: 10,
                             marginTop: 0,
                             flexDirection: "row"
@@ -306,8 +320,8 @@ class HomeScreenContent extends Component {
 
 
                     </View>
-                    <View style={{padding:15}}>
-                        <Text style={{ fontSize: 18,marginBottom:10, fontWeight: 'bold' }}>More on our company</Text>
+                    <View style={{ padding: 15 }}>
+                        <Text style={{ fontSize: 18, marginBottom: 10, fontWeight: 'bold' }}>More on our company</Text>
 
                         <Accordion dataArray={this.dataArray} />
                     </View>
