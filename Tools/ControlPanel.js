@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, FlatList, Image, Dimensions, Platform, ImageBackground } from 'react-native'
+import { View, FlatList, Image, Dimensions, Platform, ImageBackground, Linking } from 'react-native'
 import { Container, Header, Footer, Content, Icon, Title, Left, Right, Body, Text, Button, Form, Cards, Item, CardItem } from 'native-base'
 import firebaseSvc from '../firebaseSvc'
 import moment from 'moment'

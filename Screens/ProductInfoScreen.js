@@ -62,19 +62,22 @@ class ProductInfoScreenContent extends Component {
                 title: 'Paper Craft',
                 text: '*Suitable for Primary School students\n \n~Service:\n- Hand-crafted Course\n- Hand-crafted Workshop\n \nHand-crafted Kits are unplugged learning materials which is suitable for younger age children. Students are asked to build their own DIY model with their knowledge and creativity based on different science topics such as Balance and Pivot, Center of gravity and Closed circuit etc. After the class, students can bring their work home. Through the process of “trial and error”, students must test and modify their own model with the science concepts. We encourage students to think out of the box and thus increase their motivation in learning.',
                 imageurl: require('../assets/productinfo/Papercraft.png'),
-                that: this
+                that: this,
+                parther: require('../assets/productinfo/unihub.png')
             },
             {
                 title: 'Coding Galaxy',
                 text: "*Suitable for Primary School students\n \n~Service:\n- Coding Galaxy Course\n- Coding Galaxy Workshop\n \nCoding Galaxy is a comprehensively designed curriculum combined with unplugged classroom activities and a gamified learning app enables teachers to create interactive teaching in a fun and immersive learning environment. There is a collaboration mode for students solve missions together through teamwork. Also, the monitor and evaluate help teacher to trace and control students' progress with ease.",
                 imageurl: require('../assets/productinfo/codinggalaxy.png'),
-                that: this
+                that: this,
+                parther: require('../assets/productinfo/cherrypicks.png')
             },
             {
                 title: 'AR/VR courseware',
                 text: '*Suitable for Primary School and Secondary School students\n \n~Service:\n- AR/VR Course\n- AR/VR Workshop\n- AR/VR Course guidelines \n \nIntegrating Virtual Reality (VR) and Augmented Reality (AR) technology with learning and teaching, AR/VR courseware allows 360° observation of 3D objects to aid students get a better grasp of understanding various topics and subjects while being immersed in VR scenes without geographical or time boundaries to provide a greater visual impact, direct sensory imagery and deeper impression of knowledge points.',
                 imageurl: require('../assets/productinfo/vr.png'),
-                that: this
+                that: this,
+                parther: require('../assets/productinfo/nd.png')
             },
             {
                 title: 'micro:bit',
@@ -86,7 +89,8 @@ class ProductInfoScreenContent extends Component {
                 title: 'Makeblock',
                 text: 'mBot is an easy-to-run robot kit for kids to get hands-on experience about graphical programming, electronics, robotics. It is an all-in-one solution for robotics learning and designed for STEM education. Being the first partner of Makeblock, we have accumulated rich experience in teaching mBot courses.\nHaloCode is a wireless single board computer. With its built-in Wi-Fi support and microphone, the students can easily bring your board into the IoT projects and add speech recognition ability to it.',
                 imageurl: require('../assets/productinfo/makeblock.png'),
-                that: this
+                that: this,
+                parther: require('../assets/productinfo/constructyd.png')
             },
 
         ],
@@ -138,11 +142,30 @@ class ProductInfoScreenContent extends Component {
             return (<Makeblock navigation={this.state.navigation} />)
         }
         else {
-            return (
-                <View style={{ padding: 10 }}>
-                    <Text style={{ color: 'black', fontWeight: 'bold', fontSize: 18, marginBottom: 15 }}>{this.state.entries[id].title}</Text>
-                    {this.parseText(this.state.entries[id].text)}
-                </View>)
+            if (this.state.entries[id].parther) {
+                return (
+                    <View style={{ padding: 10, marginBottom: 30 }}>
+                        <Text style={{ color: 'black', fontWeight: 'bold', fontSize: 18, marginBottom: 15 }}>{this.state.entries[id].title}</Text>
+                        {this.parseText(this.state.entries[id].text)}
+
+                        <View style={{ marginTop: 20, marginBottom:30 }}>
+                        <Text style={{ flex: 1, color: 'black', fontWeight: 'bold', fontSize: 18, }}>Our Partner:</Text>
+                            <View style={{ height: Dimensions.get('window').height * 0.2, width: '100%' }}>
+                                <Image 
+                                resizeMode='contain'
+                                style={{ width: '100%', height: '100%' }} 
+                                source={this.state.entries[id].parther} />
+                            </View>
+                        </View>
+                    </View>)
+            } else {
+                return (
+                    <View style={{ padding: 10, marginBottom: 30 }}>
+                        <Text style={{ color: 'black', fontWeight: 'bold', fontSize: 18, marginBottom: 15 }}>{this.state.entries[id].title}</Text>
+                        {this.parseText(this.state.entries[id].text)}
+                    </View>)
+            }
+
         }
     }
     render() {
@@ -566,15 +589,15 @@ class ObjectBlocks extends Component {
                             >
                                 <View style={{ padding: 5 }}>
                                     <Text style={{ color: 'black', fontWeight: 'bold', fontSize: 18 }}>ObjectBlocks</Text>
-                                    <Text style={{textDecorationLine:'underline'}}>{'United Christian College’s Campus Environment'}</Text>
-                                    <View style={{width:'100%', height:170,marginBottom: 10, marginTop: 10}}>
-                                    <Lightbox>
-                                        <Image
-                                            resizeMode="contain"
-                                            style={{ width:null, height:"100%"  }}
-                                            source={require('../assets/productinfo/sigfoxcase.png')}
-                                        />
-                                    </Lightbox>
+                                    <Text style={{ textDecorationLine: 'underline' }}>{'United Christian College’s Campus Environment'}</Text>
+                                    <View style={{ width: '100%', height: 170, marginBottom: 10, marginTop: 10 }}>
+                                        <Lightbox>
+                                            <Image
+                                                resizeMode="contain"
+                                                style={{ width: null, height: "100%" }}
+                                                source={require('../assets/productinfo/sigfoxcase.png')}
+                                            />
+                                        </Lightbox>
                                     </View>
                                     <Text>{'IoT WAN technology with wider wireless coverage\nUsing Sigfox (Low Power Band IoT), schools are allowed to build a customized dashboard to overview the campus environment in a big screen.\n \nUsing Sigfox, a simulated 5G environment can be built for students to create more Smart Campus Projects.'}</Text>
                                 </View>
@@ -957,7 +980,7 @@ class Makeblock extends Component {
             <View>
                 <View style={{ flexDirection: 'row', margin: 15 }}>
                     <View style={{ flex: 1, alignItems: 'flex-start', justifyContent: 'center' }}>
-                        <Text style={{ color: 'black', fontWeight: 'bold', fontSize: 18 }}>Minecraft</Text>
+                        <Text style={{ color: 'black', fontWeight: 'bold', fontSize: 18 }}>Makeblock</Text>
                     </View>
                     <Button
                         style={{ flex: 1.5 }}
@@ -976,7 +999,18 @@ class Makeblock extends Component {
                     <View style={{ flexDirection: 'row', marginBottom: 4 }}><View style={{ flex: 1 }}><Text>- </Text></View><View style={{ flex: 11 }}><Text>Creative / IoT Competition</Text></View></View>
                 </View>
                 <Text style={{ margin: 15, marginBottom: 30 }}>{'mBot is an easy-to-run robot kit for kids to get hands-on experience about graphical programming, electronics, robotics. It is an all-in-one solution for robotics learning and designed for STEM education. Being the first partner of Makeblock, we have accumulated rich experience in teaching mBot courses.\n \nHaloCode is a wireless single board computer. With its built-in Wi-Fi support and microphone, the students can easily bring your board into the IoT projects and add speech recognition ability to it.'}</Text>
-
+                <View style={{ height: Dimensions.get('window').height * 0.15, marginBottom: 30 }}>
+                    <Text style={{ flex: 1, color: 'black', fontWeight: 'bold', fontSize: 18, }}>Our Partner:</Text>
+                    <View style={{ flex: 3, flexDirection: 'row' }}>
+                        <View style={{ width: Dimensions.get('window').width / 3 - 15, padding: 2 }}>
+                            <Image
+                                resizeMode='contain'
+                                style={{ width: '100%', height: '100%' }}
+                                source={require('../assets/productinfo/constructyd.png')}
+                            />
+                        </View>
+                    </View>
+                </View>
             </View>
 
 
