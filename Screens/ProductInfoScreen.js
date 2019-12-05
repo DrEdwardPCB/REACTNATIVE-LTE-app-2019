@@ -668,7 +668,13 @@ class ObjectBlocks extends Component {
                             <ModalContent
                                 style={{ backgroundColor: '#fff' }}
                             >
+                                
                                 <View style={{ padding: 5 }}>
+                                    <Image
+                                        style={{width:'100%', height:Dimensions.get('window').height*0.2}}
+                                        resizeMode='contain'
+                                        source={require('../assets/productinfo/abtitu.jpg')}
+                                    />
                                     <Text>
                                         {'Create iOS & Android app without coding. Abtitu is a mobile app builder where students can custom their app by drag & drop and also connect to IoT in a minute. It runs on the latest internet browsers.\n \nDeveloper could build a Smart Campus using ObjectBlocks and apps to control or monitor the environment of the school. For example, turn on the light and air conditioner remotely before the class starts. Students could learn more through daily life.'}
                                     </Text>
@@ -679,6 +685,7 @@ class ObjectBlocks extends Component {
                                         <View style={{ flexDirection: 'row', marginBottom: 4 }}><View style={{ flex: 1 }}><Text>- </Text></View><View style={{ flex: 11 }}><Text>Develop customized project</Text></View></View>
                                     </View>
                                 </View>
+                                
                             </ModalContent>
                         </Modal>
                     </View>
