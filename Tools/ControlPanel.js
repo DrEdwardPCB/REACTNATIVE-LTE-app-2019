@@ -50,7 +50,7 @@ export default class ControlPanel extends Component {
                         flexGrow: 1
                     }}>
                         <View style={{ flex: 2 }}>
-                            <ImageBackground style={{ width: "100%", height: "100%" }} opacity={0.6} source={require('../assets/64c95c_9e9740e1b30c4d8fbb2a89bf63d60d23_mv2_d_1200_1600_s_2.jpg')}>
+                            <ImageBackground resizeMode='cover' style={{ width: "100%", height: "100%" }} opacity={0.6} source={require('../assets/objblocks.jpeg')}>
                                 <View style={{ flex: 1, justifyContent: 'space-between' }}>
                                     <View
                                         style={{ padding: 20 }}

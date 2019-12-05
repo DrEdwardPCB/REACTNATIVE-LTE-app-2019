@@ -386,6 +386,7 @@ class ProductInfoScreenContent extends Component {
                                                                     QuickStorageSvc.setPhone(this.state.phone)
                                                                     QuickStorageSvc.storeAsync(() => {
                                                                         alert("Successfully submit request, we shall contact you soon")
+                                                                        this.setState({visible:false})
                                                                     },
                                                                         () => { alert("An error has occured") }
                                                                     )
@@ -784,11 +785,11 @@ class ObjectBlocks extends Component {
                 </View>
                 <Text>ObjectBlocks is designed and ideal for all stages in IoT projects which features the followings:</Text>
                 <View style={{ margin: 15 }}>
-                    <View style={{ flexDirection: 'row', marginBottom: 4 }}><View style={{ flex: 1 }}><Text>✓ </Text></View><View style={{ flex: 11 }}><Text><Text style={{ fontWeight: 'bold' }}>wireless code upload</Text> to Arduino and Raspberry Pi;</Text></View></View>
+                    <View style={{ flexDirection: 'row', marginBottom: 4 }}><View style={{ flex: 1 }}><Text>✓ </Text></View><View style={{ flex: 11 }}><Text><Text style={{ fontWeight: 'bold' }}>Wireless code upload</Text> to Arduino and Raspberry Pi;</Text></View></View>
                     <View style={{ flexDirection: 'row', marginBottom: 4 }}><View style={{ flex: 1 }}><Text>✓ </Text></View><View style={{ flex: 11 }}><Text><Text style={{ fontWeight: 'bold' }}>Block programming </Text> (Arduino C and Python codes);</Text></View></View>
                     <View style={{ flexDirection: 'row', marginBottom: 4 }}><View style={{ flex: 1 }}><Text>✓ </Text></View><View style={{ flex: 11 }}><Text>Highly <Text style={{ fontWeight: 'bold' }}>customisable data dashboard</Text> with real-time and historical data and controls;</Text></View></View>
                     <View style={{ flexDirection: 'row', marginBottom: 4 }}><View style={{ flex: 1 }}><Text>✓ </Text></View><View style={{ flex: 11 }}><Text><Text style={{ fontWeight: 'bold' }}>Google AIY Voice / Vision kits</Text> for AI projects;</Text></View></View>
-                    <View style={{ flexDirection: 'row', marginBottom: 4 }}><View style={{ flex: 1 }}><Text>✓ </Text></View><View style={{ flex: 11 }}><Text><Text style={{ fontWeight: 'bold' }}>external IOT devices through IFTTT</Text> and <Text style={{ fontWeight: 'bold' }}>KUJU smart devices;</Text></Text></View></View>
+                    <View style={{ flexDirection: 'row', marginBottom: 4 }}><View style={{ flex: 1 }}><Text>✓ </Text></View><View style={{ flex: 11 }}><Text><Text style={{ fontWeight: 'bold' }}>External IOT devices through IFTTT</Text> and <Text style={{ fontWeight: 'bold' }}>KUJU smart devices;</Text></Text></View></View>
                     <View style={{ flexDirection: 'row', marginBottom: 4 }}><View style={{ flex: 1 }}><Text>✓ </Text></View><View style={{ flex: 11 }}><Text><Text style={{ fontWeight: 'bold' }}>Inter-board communications;</Text></Text></View></View>
                     <View style={{ flexDirection: 'row', marginBottom: 4 }}><View style={{ flex: 1 }}><Text>✓ </Text></View><View style={{ flex: 11 }}><Text>Compatible with <Text style={{ fontWeight: 'bold' }}>PC, tablets and</Text><Text style={{ fontWeight: 'bold' }}> any devices</Text> to Arduino and Raspberry Pi;</Text></View></View>
 
