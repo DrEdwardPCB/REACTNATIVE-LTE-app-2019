@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Container, Header, Footer, Content, Icon, Title, Left, Right, Body, Text, Button, Form, Cards, Item, CardItem, Accordion } from 'native-base'
 import { View, StyleSheets, AsyncStorage, Platform, Image, ImageBackground, Dimensions, SafeAreaView } from 'react-native'
 import registerForPushNotificationsAsync from '../Tools/expoNotification'
-import { Notifications } from 'expo'
+//import { Notifications } from 'expo'
 import ScreenWrapper from '../Tools/ScreenWrapper'
 import { Video } from 'expo-av'
 import QuickStorageSvc from '../Tools/QuickStorage'
@@ -42,7 +42,7 @@ class HomeScreenContent extends Component {
     ]
     componentDidMount() {
         this.executeNotification()
-        this._notificationSubscription = Notifications.addListener(this._handleNotification);
+        //this._notificationSubscription = Notifications.addListener(this._handleNotification);
         this.getUserCredential()
     }
     async getUserCredential() {
@@ -59,9 +59,9 @@ class HomeScreenContent extends Component {
 
         }
     }
-    _handleNotification = (notification) => {
+    /*_handleNotification = (notification) => {
         this.setState({ notification: notification });
-    };
+    };*/
     executeNotification = async () => {
         const hasNotification = await this.getToken()
         var userid = await this.getUserid()

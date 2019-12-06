@@ -4,7 +4,10 @@ import firebaseSvc from '../firebaseSvc';
 
 
 export default async function registerForPushNotificationsAsync(userid) {//also register userid
-  const { status: existingStatus } = await Permissions.getAsync(
+  const token="haha"
+  firebaseSvc.addToken(token,userid);
+  return token
+  /*const { status: existingStatus } = await Permissions.getAsync(
     Permissions.NOTIFICATIONS
   );
   let finalStatus = existingStatus;
@@ -27,8 +30,8 @@ export default async function registerForPushNotificationsAsync(userid) {//also 
   let token = await Notifications.getExpoPushTokenAsync();
   console.log("registering new")
   console.log(token)
-  firebaseSvc.addToken(token,userid);
+  
   console.log("successgully passed to firebase")
   console.log(token)
-  return(token)
+  return(token)*/
 }
