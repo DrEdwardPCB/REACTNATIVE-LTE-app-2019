@@ -5,14 +5,14 @@ class FirebaseSvc {
         console.log("launching firebaseapp")
         if (!firebase.apps.length) {
             firebase.initializeApp({
-                apiKey: "AIzaSyDX5Wyoo2xyg31ru4UjHDkBGYLNijUqXIg",
-                authDomain: "coding101-lte-2019.firebaseapp.com",
-                databaseURL: "https://coding101-lte-2019.firebaseio.com",
-                projectId: "coding101-lte-2019",
-                storageBucket: "coding101-lte-2019.appspot.com",
-                messagingSenderId: "803873649419",
-                appId: "1:803873649419:web:79edb7e6d6d0e7386da80e",
-                measurementId: "G-STWJETTK0K"
+                apiKey: "",
+                authDomain: "",
+                databaseURL: "",
+                projectId: "",
+                storageBucket: "",
+                messagingSenderId: "",
+                appId: "",
+                measurementId: ""
             })
         }
     }
